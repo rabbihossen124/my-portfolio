@@ -15,6 +15,7 @@ export interface ProjectItem {
   summary: string;
   description: string;
   tags: string[];
+  imageUrl?: string;
   demoUrl?: string;
   githubUrl?: string;
   featured: boolean;
@@ -223,6 +224,7 @@ export const portfolioData: PortfolioData = {
       description:
         "Built with Next.js, React, and Tailwind CSS. Features an interactive library of 12 targeted lifts across major muscle groups, dedicated 'My Plan' builder, set logging, and a responsive dark interface.",
       tags: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+      imageUrl: "/projects/fitlog.png",
       demoUrl: "https://assiment-06.vercel.app/",
       githubUrl: "https://github.com/rabbihossen124/Assiment-06",
       featured: true,
@@ -237,6 +239,7 @@ export const portfolioData: PortfolioData = {
       description:
         "Developed with React, Vite, and Tailwind CSS. Features instant technology filtering, dynamic stack addition with live toast alerts, conflict detection, and quick stack export.",
       tags: ["React", "Vite", "Tailwind CSS", "JavaScript"],
+      imageUrl: "/projects/devstack.png",
       demoUrl: "https://dev-stack-appliation.netlify.app/",
       githubUrl: "https://github.com/rabbihossen124",
       featured: true,
@@ -251,6 +254,7 @@ export const portfolioData: PortfolioData = {
       description:
         "Developed with Next.js, React, and Tailwind CSS. Demonstrates clean component architecture, client-side state management, responsive product catalog, and checkout flow.",
       tags: ["Next.js", "React", "Tailwind CSS", "REST APIs"],
+      imageUrl: "/projects/shopsphere.jpg",
       demoUrl: "https://shopsphere-demo.vercel.app",
       githubUrl: "https://github.com/rabbihossen124/shopsphere-ecommerce",
       featured: true,

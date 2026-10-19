@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { portfolioData, ProjectItem } from "@/data/portfolioData";
 import { ExternalLinkIcon, GitHubIcon, CodeWindowIcon } from "./Icons";
 
@@ -28,29 +29,52 @@ export const Projects = () => {
               key={project.id}
               className="group flex flex-col rounded-2xl bg-slate-900/60 border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-sky-500/40 hover:shadow-2xl hover:shadow-sky-500/10"
             >
-              {/* Card Mockup Visual Header */}
-              <div className="bg-slate-950/80 border-b border-white/10 p-6 flex flex-col justify-between min-h-[170px]">
-                <div className="flex items-center justify-between mb-4">
+              {/* Card Browser Mockup Header & Screenshot */}
+              <div className="bg-slate-950 border-b border-white/10 flex flex-col overflow-hidden">
+                {/* Browser Title Bar */}
+                <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/95 border-b border-white/5">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_6px_rgba(56,189,248,0.6)]" />
-                    <span className="w-2 h-2 rounded-full bg-white/20" />
-                    <span className="w-2 h-2 rounded-full bg-white/20" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 shadow-[0_0_6px_rgba(244,63,94,0.4)]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 shadow-[0_0_6px_rgba(245,158,11,0.4)]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 shadow-[0_0_6px_rgba(16,185,129,0.4)]" />
                   </div>
                   {project.status && (
-                    <span className="font-mono text-xs px-2 py-0.5 rounded bg-white/5 border border-white/10 text-sky-300">
+                    <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 font-medium tracking-wide">
                       {project.status}
                     </span>
                   )}
                 </div>
 
-                <div className="flex flex-col gap-2 opacity-85">
-                  <div className="w-3/5 h-2 rounded-full bg-sky-500/20" />
-                  <div className="h-2 rounded-full bg-white/[0.06]" />
-                  <div className="grid grid-cols-3 gap-1.5 mt-1">
-                    <div className="h-9 rounded-md bg-white/[0.03] border border-dashed border-white/10" />
-                    <div className="h-9 rounded-md bg-white/[0.03] border border-dashed border-white/10" />
-                    <div className="h-9 rounded-md bg-white/[0.03] border border-dashed border-white/10" />
-                  </div>
+                {/* Project Screenshot / Visual */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                  {project.imageUrl ? (
+                    <a
+                      href={project.demoUrl || project.githubUrl || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative w-full h-full cursor-pointer"
+                      title={`Visit ${project.title}`}
+                    >
+                      <Image
+                        src={project.imageUrl}
+                        alt={`${project.title} preview screenshot`}
+                        fill
+                        className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none" />
+                    </a>
+                  ) : (
+                    <div className="p-6 flex flex-col justify-between h-full opacity-85">
+                      <div className="w-3/5 h-2 rounded-full bg-sky-500/20" />
+                      <div className="h-2 rounded-full bg-white/[0.06]" />
+                      <div className="grid grid-cols-3 gap-1.5 mt-1">
+                        <div className="h-9 rounded-md bg-white/[0.03] border border-dashed border-white/10" />
+                        <div className="h-9 rounded-md bg-white/[0.03] border border-dashed border-white/10" />
+                        <div className="h-9 rounded-md bg-white/[0.03] border border-dashed border-white/10" />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
