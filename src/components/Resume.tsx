@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { portfolioData } from "@/data/portfolioData";
+import { AnimatedDownloadButton } from "./AnimatedDownloadButton";
 import {
   GraduationCapIcon,
-  DownloadIcon,
   EyeIcon,
   FileIcon,
   SparklesIcon,
@@ -189,15 +189,15 @@ export const Resume = () => {
               </div>
             </div>
 
-            {/* Action Buttons: View Resume & Download Resume */}
+            {/* Action Buttons: View Resume & Animated Download Resume */}
             <div className="flex flex-col gap-3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex flex-col sm:flex-row items-center gap-3">
                 {/* View Resume Button */}
                 <a
                   href={resume.pdfPath}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3.5 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-sky-400/50 hover:text-sky-300 transition-all duration-200 shadow-sm cursor-pointer"
+                  className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold h-[55px] px-5 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-sky-400/50 hover:text-sky-300 transition-all duration-200 shadow-sm cursor-pointer"
                   title="Open resume PDF in new tab"
                 >
                   <EyeIcon size={18} className="text-sky-400" />
@@ -205,17 +205,12 @@ export const Resume = () => {
                   <ExternalLinkIcon size={14} className="opacity-60" />
                 </a>
 
-                {/* Download Resume Button */}
-                <a
-                  href={resume.pdfPath}
-                  download={resume.hasResumePdf ? "Rabbi_Frontend_Developer_Resume.pdf" : undefined}
-                  className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-5 py-3.5 rounded-full bg-sky-400 text-slate-950 hover:bg-sky-300 transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 cursor-pointer"
-                  onClick={handleDownloadClick}
-                  title="Download resume PDF to your device"
-                >
-                  <DownloadIcon size={18} />
-                  <span>Download Resume</span>
-                </a>
+                {/* Animated Download Button from Uiverse.io */}
+                <AnimatedDownloadButton
+                  downloadUrl={resume.pdfPath}
+                  fileName="Rabbi_Frontend_Developer_Resume.pdf"
+                  className="w-full sm:w-auto"
+                />
               </div>
 
               {(!resume.hasResumePdf || showHelper) && (
